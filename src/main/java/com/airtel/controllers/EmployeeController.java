@@ -23,7 +23,7 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/getEmployee", method = RequestMethod.GET)
 	public ResponseEntity<List<Employee>> FetchEmployees() {
-		List<Employee> employees = employeeService.getEmployees();
+		List<Employee> employees = employeeService.getAllEmployees();
 
 		if (employees == null) {
 			return new ResponseEntity<>(employees, HttpStatus.NOT_FOUND);
@@ -33,7 +33,7 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/getEmployee/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Employee> getEmployee(@PathVariable("id") String employeeId) {
-		Employee employee = employeeService.getEmployee(employeeId);
+		Employee employee = employeeService.getEmployeeData(employeeId);
 		if (employee == null) {
 			return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		}
@@ -43,11 +43,11 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/DeleteEmployee/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Employee> deleteEmployee(@PathVariable("id") String employeeId) {
-		Employee employee = employeeService.getEmployee(employeeId);
+		Employee employee = employeeService.getEmployeeData(employeeId);
 		if (employee == null) {
 			return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		}
-		employeeService.deleteEmployee(employee);
+		employeeService.deleteEmployeeData(employee);
 		return new ResponseEntity<Employee>(employee, HttpStatus.NO_CONTENT);
 	}
 
@@ -56,19 +56,19 @@ public class EmployeeController {
 		if (employee == null) {
 			return new ResponseEntity<Employee>(HttpStatus.BAD_REQUEST);
 		}
-		employeeService.createEmployee(employee);
+		employeeService.createEmployeeData(employee);
 		return new ResponseEntity<Employee>(employee, HttpStatus.CREATED);
 	}
 	@RequestMapping(value = "/UpdateEmployee/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Employee> updateEmployee(@PathVariable("id") String employeeId,
 			@RequestBody Employee employee) {
-		Employee isExist = employeeService.getEmployee(employeeId);
+		Employee isExist = employeeService.getEmployeeData(employeeId);
 		if (isExist == null) {
 			return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		} else if (employee == null) {
 			return new ResponseEntity<Employee>(HttpStatus.BAD_REQUEST);
 		}
-		employeeService.updateEmployee(employee);
+		employeeService.updateEmployeeData(employee);
 		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
 	}
 }

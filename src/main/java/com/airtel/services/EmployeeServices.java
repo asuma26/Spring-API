@@ -7,10 +7,10 @@ import com.airtel.models.Employee;
 public interface EmployeeServices {
 
 	
-	public List<Employee> getEmployees();
-	public Employee getEmployee(String employeeId);
-	public void deleteEmployee(Employee employee); 
-	public void updateEmployee(Employee employee);
-	public void createEmployee(Employee employee);
+	public List<Employee> getAllEmployees();
+	public Employee getEmployeeData(String employeeId);
+	public void deleteEmployeeData(Employee employee); 
+	public void updateEmployeeData(Employee employee);
+	public void createEmployeeData(Employee employee);
 	
 }

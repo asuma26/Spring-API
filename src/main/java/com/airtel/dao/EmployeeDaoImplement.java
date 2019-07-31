@@ -18,7 +18,7 @@ public class EmployeeDaoImplement implements EmployeeDao{
 	@Autowired
     private MongoTemplate mongoTemplate;
 	
-	final String COLLECTION = "Employee";
+	final String COLLECTION = "EmployeeData";
 	
 	@Override
 	public List<Employee> getEmployees() {
@@ -30,7 +30,7 @@ public class EmployeeDaoImplement implements EmployeeDao{
 	public Employee getEmployee(String employeeId) {
 		// TODO Auto-generated method stub
 		Query query = new Query(Criteria.where("_id").is(employeeId));
-        return mongoTemplate.findOne(query, Employee.class, COLLECTION);
+        return mongoTemplate.findOne(query, Employee.class, this.COLLECTION);
 	}
 
 	@Override

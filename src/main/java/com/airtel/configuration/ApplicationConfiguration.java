@@ -18,7 +18,7 @@ public class ApplicationConfiguration {
     public MongoDbFactory mongoDbFactory() throws Exception {
         MongoClient mongoClient = new MongoClient("localhost", 27017);
         UserCredentials userCredentials = new UserCredentials("", "");
-        return new SimpleMongoDbFactory(mongoClient, "EMS");
+        return new SimpleMongoDbFactory(mongoClient, "EmployeeDatabase");
     }
  
     @Bean

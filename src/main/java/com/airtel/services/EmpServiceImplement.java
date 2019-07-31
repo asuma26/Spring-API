@@ -14,30 +14,30 @@ public class EmpServiceImplement implements EmployeeServices {
 	@Autowired
 	private EmployeeDao employeeDao;
 	@Override
-	public List<Employee> getEmployees() {
+	public List<Employee> getAllEmployees() {
 		List<Employee> employees = employeeDao.getEmployees();
 		return employees;
 	}
 
 	@Override
-	public Employee getEmployee(String employeeId) {
+	public Employee getEmployeeData(String employeeId) {
 		Employee employee = employeeDao.getEmployee(employeeId);
 		return employee;
 	}
 
 	@Override
-	public void deleteEmployee(Employee employee) {
+	public void deleteEmployeeData(Employee employee) {
 		employeeDao.deleteEmployee(employee);
 	}
 
 	@Override
-	public void updateEmployee(Employee employee) {
+	public void updateEmployeeData(Employee employee) {
 		employeeDao.updateEmployee(employee);
 		
 	}
 
 	@Override
-	public void createEmployee(Employee employee) {
+	public void createEmployeeData(Employee employee) {
 		employeeDao.createEmployee(employee);
 		
 	}
